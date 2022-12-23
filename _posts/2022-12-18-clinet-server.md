@@ -1,7 +1,7 @@
 ---
 title: client와 server 
 date: 2022-12-17 15:00:00 +/-0900
-categories: [studyplace, spring]
+categories: [studyplace, Hello-Spring!]
 tags: [spring]     # TAG names should always be lowercase
 ---
 
