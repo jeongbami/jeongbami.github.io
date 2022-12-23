@@ -118,3 +118,21 @@ that called 'service instance' <br>
 3) cf apps
 4) cf services
 5) cf bind-service --
+
+## Admin
+- admin 계정은 모든 권한을 가지고 있음
+- `cf create-service-broker mysql-service-broker admin cloudfoundry http://<mysql-broker_ip>:8080`
++ 이는 cloudfoundry에 등록되어있는 service를 이용하기 위한 broker 계정임
++ cf service-access / cf marketplace 가 없는 이유는 1. broker가 정상 등록이 되지 않았거나 2. 설치중 issue가 있었을 것이다
++ cf login 
+    E-mail : admin pw : admin 
+    org : system
+    space : dev
++ 정상 작동 되지 않을때는 cf delete-service-broker을 통해 정상 삭제 후 재배포
+```markdown
+```shell
+    cf create-service-broker mysql-service-broker admin cloudfoundry http://10.160.64.124:8080
+    cf service-access       -) 정상적으로 출력되는 service 목록
+    
+```
+````
