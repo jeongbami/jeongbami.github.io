@@ -18,7 +18,7 @@ mermaid: true
                 2) `cf create-service-broker username userpassword http:{mysql-broker-ip}:8080`
                         등록되어있는 service-broker가 없다면 생성해준다
                 3) `cf enable-service-access`
-        >service broker 개발 환경
+        service broker 개발 환경
             1. Cloud Foundry instance에 대한 관리자 권한이 있어야 함.
                     `In order to run many of the commands below, you must be authenticated with Cloud Foundry 
                     as an admin user or as a space developer.`                                                   - cloudfoundry docs
@@ -28,8 +28,7 @@ mermaid: true
                 해당 org내의 사용자들이 접근 가능하다.
                  {: .prompt-tip}
         대체 방법
-            > 
-            ```shell
+             ```shell
             cf create-user-provided-service my-db-mine -p '{"username":"admin","paasword":"pa55woRD"}'
             name         service         plan   bound apps   last operation   broker   upgrade available
             my-db-mine   user-provided 
@@ -77,8 +76,8 @@ mermaid: true
                 cloud foundry에서 제공하는 서비스인 marketplace에 등록되어있는 resources를 service instance라 한다.
                 Services >  service instances
                     marketplace :   cloud foundry service
-                                >          it provide resources services 
-                                >           that called 'service instance'
+                                         it provide resources services 
+                                         that called 'service instance'
              service binding
                 일부 서비스에 한해 제공된다.
                 `cf bind-service MY_APP MY_DB`
