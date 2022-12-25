@@ -21,7 +21,7 @@ mermaid: true
         *인스턴스 변수 (instance varialbe)
         1) 생성시기 
         클래스 내의 변수로  {% raw %}객체가 생성될 때{% endraw %}  변수가 선언된다 
-        > 고로 "객체"란 instance var의 집합체라 말할 수 있다. 프로그래 관점에서 인스턴스 변수를 묶어놓은 것 그 이상 그 이하도 아니다. {: .prompt-info }
+        > 고로 "객체"란 instance var의 집합체라 말할 수 있다. 프로그래 관점에서 인스턴스 변수를 묶어놓은 것 그 이상 그 이하도 아니다! {: .prompt-info }
 
 - 클래스 변수와 인스턴스 변수의 차이점
 >  class var는 ram에 loading / save 가 되는 개념이고 instance var는 객체생성이 필요하다.
