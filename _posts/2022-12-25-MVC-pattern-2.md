@@ -7,7 +7,8 @@ tags: [spring]     # TAG names should always be lowercase
 
 
 # 예제 1) MethodInfo.java
-```shell
+````markdown
+```java
 package com.fastcampus.ch2;
 
 import java.lang.reflect.Method;
@@ -47,9 +48,11 @@ public class MethodInfo {
 	} // main
 }
 ```
+````
 
 # 예제 2) YoilTeller_servlet.java
-```shell
+````markdown
+```java
 package com.fastcampus.ch2;
 
 import java.io.IOException;
@@ -120,11 +123,14 @@ public class YoilTeller_servlet {
 	
 }
 ```
+````
 
 # 출력 
-```shell
+````markdown
+```java
 void main(javax.servlet.http.HttpServletRequest arg0, javax.servlet.http.HttpServletResponse arg1)
 ```
+````
 
 # 이론 설명
 - 매개 변수의 이름을 저장하기 위해선 `javac -parameters` 와 같은 매개변수 이름 저장 옵션을 사용해야 한다. (java 8 version 이후 부터 가능 )

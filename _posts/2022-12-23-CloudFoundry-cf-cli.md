@@ -9,25 +9,24 @@ render_with_liquid: false
 
 
 <h2 data-toc-skip>CLI 개념파악</h2> 
-- MySQL 설치를 통해 알아보기 
-명령어들이 어떤 역할을 하는지 알고 활용 해보기
+MySQL 설치를 통해 알아보기 명령어들이 어떤 역할을 하는지 알고 활용 해보기
        
 ## SERVICE BROCKER
 - service를 사용하기 위해 만든 API
-+    1) `cf service-brokers`      사용할 수 있는 borker의 목록을 확인한다
-+   2) `cf create-service-broker username userpassword http:{mysql-broker-ip}:8080`
-    등록되어있는 service-broker가 없다면 생성해준다
-+  3) `cf enable-service-access`
+    +`cf service-brokers`      사용할 수 있는 borker의 목록을 확인한다
+    +`cf create-service-broker username userpassword http:{mysql-broker-ip}:8080`
+        * 등록되어있는 service-broker가 없다면 생성해준다
+    + `cf enable-service-access`
 -  service broker 개발 환경
-1. Cloud Foundry instance에 대한 관리자 권한이 있어야 함.
-+    `In order to run many of the commands below, you must be authenticated with Cloud Foundry 
-as an admin user or as a space developer.`                                                   - cloudfoundry docs
-+          cloud foundry에서 인증 받은 admin as SpaceDeveloper만 개발 가능 
-2. admin 계정에 등록된 mysql-service-broker 접근 권한 부여
-admin이 cf enalbe-service-access <service name> -o <org-name> 를 통해 access를 부여해야만 해당 org내의 사용자들이 접근 가능하다.{: .prompt-tip}<br>
+    + Cloud Foundry instance에 대한 관리자 권한이 있어야 함.
+    > `In order to run many of the commands below, you must be authenticated with Cloud Foundry as an admin user or as a space developer.`                                                   - cloudfoundry docs
+        * cloud foundry에서 인증 받은 admin as SpaceDeveloper만 개발 가능 
+    + admin 계정에 등록된 mysql-service-broker 접근 권한 부여
+        * > admin이 cf enalbe-service-access <service name> -o <org-name> 를 통해 access를 부여해야만 해당 org내의 사용자들이 접근 가능하다. {: .prompt-tip} <br>
+
 - 대체 방법
 ````markdown
-```shell
+```console
 ubuntu@paasta-ta-bami-inception-1:~/workspace/service-deployment/mysql$ cf bind-service spring-music my-db-mine
 Binding service my-db-mine to app spring-music in org bami-org / space bami-space as bami...
 OK
@@ -90,26 +89,24 @@ Restarting app spring-music in org bami-org / space bami-space as bami...
 Stopping app...
 Waiting for app to start...
 Instances starting...
-{: .terminal}
 ```
 ````
 ## SERVICE & APP
 
 -   service instance    
-    +        cloud foundry에서 제공하는 서비스인 marketplace에 등록되어있는 resources를 service instance라 한다. <br>
-    +        Services >  service instances <br>
-    +            marketplace :   cloud foundry service <br>
-it provide resources services  <br>
-that called 'service instance' <br>
+    + cloud foundry에서 제공하는 서비스인 marketplace에 등록되어있는 resources를 service instance라 한다. <br>
+    + Services >  service instances <br>
+    + marketplace :   cloud foundry service <br>
+        * it provide resources services  <br>
+        * that called 'service instance' <br>
 -  service binding
-    +        일부 서비스에 한해 제공된다.
-    +        `cf bind-service MY_APP MY_DB`
-    +        `cf bind-route-service DOMAIN`
+    + 일부 서비스에 한해 제공된다.
+        *`cf bind-service MY_APP MY_DB`
+        * `cf bind-route-service DOMAIN`
     1) Service instance bind App <br>
-    deliver credentials for the service instace to the app<br>
-    - binding app Manifest
-    service instace와 bind 하는 방법 외에  app의 manifest file을 읽어 bind하는 방법도 있다.  (during push)
-    2) Service instance bind Route
+        deliver credentials for the service instace to the app<br>
+    2) binding app Manifest : service instace와 bind 하는 방법 외에  app의 manifest file을 읽어 bind하는 방법도 있다.  (during push)
+    3)) Service instance bind Route
 ##  SUMMARY
 사용 방법
 1) cf create-service-broker     
@@ -122,17 +119,16 @@ that called 'service instance' <br>
 ## Admin
 - admin 계정은 모든 권한을 가지고 있음
 - `cf create-service-broker mysql-service-broker admin cloudfoundry http://<mysql-broker_ip>:8080`
-+ 이는 cloudfoundry에 등록되어있는 service를 이용하기 위한 broker 계정임
-+ cf service-access / cf marketplace 가 없는 이유는 1. broker가 정상 등록이 되지 않았거나 2. 설치중 issue가 있었을 것이다
-+ cf login 
+    + 이는 cloudfoundry에 등록되어있는 service를 이용하기 위한 broker 계정임
+    + cf service-access / cf marketplace 가 없는 이유는 1. broker가 정상 등록이 되지 않았거나 2. 설치중 issue가 있었을 것이다
+    + cf login 
     E-mail : admin pw : admin 
     org : system
     space : dev
-+ 정상 작동 되지 않을때는 cf delete-service-broker을 통해 정상 삭제 후 재배포
+    + 정상 작동 되지 않을때는 cf delete-service-broker을 통해 정상 삭제 후 재배포
 ```markdown
-```shell
-    cf create-service-broker mysql-service-broker admin cloudfoundry http://10.160.64.124:8080
-    cf service-access       -) 정상적으로 출력되는 service 목록
-    
+```console
+    $ cf create-service-broker mysql-service-broker admin cloudfoundry http://10.160.64.124:8080
+    $ cf service-access       -) 정상적으로 출력되는 service 목록
 ```
 ````
