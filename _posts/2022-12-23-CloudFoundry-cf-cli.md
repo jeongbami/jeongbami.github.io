@@ -25,7 +25,6 @@ MySQL 설치를 통해 알아보기 명령어들이 어떤 역할을 하는지 �
         * > admin이 cf enalbe-service-access <service name> -o <org-name> 를 통해 access를 부여해야만 해당 org내의 사용자들이 접근 가능하다. {: .prompt-tip} <br>
 
 - 대체 방법
-````markdown
 ```console
 ubuntu@paasta-ta-bami-inception-1:~/workspace/service-deployment/mysql$ cf bind-service spring-music my-db-mine
 Binding service my-db-mine to app spring-music in org bami-org / space bami-space as bami...
@@ -90,7 +89,7 @@ Stopping app...
 Waiting for app to start...
 Instances starting...
 ```
-````
+
 ## SERVICE & APP
 
 -   service instance    
@@ -126,9 +125,8 @@ Instances starting...
     org : system
     space : dev
     + 정상 작동 되지 않을때는 cf delete-service-broker을 통해 정상 삭제 후 재배포
-```markdown
+
 ```console
     $ cf create-service-broker mysql-service-broker admin cloudfoundry http://10.160.64.124:8080
     $ cf service-access       -) 정상적으로 출력되는 service 목록
 ```
-````
