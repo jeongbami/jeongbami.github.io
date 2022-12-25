@@ -16,9 +16,7 @@ mermaid: true
             2) 변수 type 앞에 static이 붙음
             3) 생성시기
              클래스가 메모리에 할당될 때 자동으로 생성된다. (==클래스가 필요할 때 / 객체를 만들기 전 /설계도가 올라갈   때 
-             ````markdown
-             > CPU    <----2.작업---->     RAM(메모리)    <---- 1. loading       SSD(저장장치)  ----> 3. save           SSD
-             ````
+             ` > CPU    <----2.작업---->     RAM(메모리)    <---- 1. loading       SSD(저장장치)  ----> 3. save           SSD`
 
         *인스턴스 변수 (instance varialbe)
         1) 생성시기 
