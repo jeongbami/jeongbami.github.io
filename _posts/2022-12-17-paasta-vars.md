@@ -1,7 +1,7 @@
 ---
 title: paasta>vars.yml
 date: 2022-12-17 19:38:00 +/-0900
-categories: [PaaS-TA, operation]
+categories: [cloud, PaaS-TA]
 tags: [paasta, paas]     # TAG names should always be lowercase
 ---
 
