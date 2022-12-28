@@ -25,7 +25,8 @@ MySQL 설치를 통해 알아보기 명령어들이 어떤 역할을 하는지 �
         * > admin이 cf enalbe-service-access <service name> -o <org-name> 를 통해 access를 부여해야만 해당 org내의 사용자들이 접근 가능하다. {: .prompt-tip} <br>
 
 - 대체 방법
-```console
+
+```shell
 ubuntu@paasta-ta-bami-inception-1:~/workspace/service-deployment/mysql$ cf bind-service spring-music my-db-mine
 Binding service my-db-mine to app spring-music in org bami-org / space bami-space as bami...
 OK
