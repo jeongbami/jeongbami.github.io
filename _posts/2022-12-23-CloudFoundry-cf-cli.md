@@ -24,7 +24,7 @@ MySQL 설치를 통해 알아보기 명령어들이 어떤 역할을 하는지 �
     + admin 계정에 등록된 mysql-service-broker 접근 권한 부여
         * > admin이 cf enalbe-service-access <service name> -o <org-name> 를 통해 access를 부여해야만 해당 org내의 사용자들이 접근 가능하다. {: .prompt-tip} <br>
 
-- 대체 방법
+# 대체..?
 
 ```shell
 ubuntu@paasta-ta-bami-inception-1:~/workspace/service-deployment/mysql$ cf bind-service spring-music my-db-mine
