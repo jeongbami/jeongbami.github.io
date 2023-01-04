@@ -1,6 +1,6 @@
 ---
 title: springboot를 이용한 게시판 및 mysql 연동 - mac과 localhost 연결 issue 
-date: 2022-12-29 10:01:00 +/-0900
+date: 2022-12-30 10:01:00 +/-0900
 categories: [studyplace, Hello-Spring!]
 tags: [spring]     # TAG names should always be lowercase
 ---
