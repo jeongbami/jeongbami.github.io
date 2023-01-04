@@ -1,0 +1,79 @@
+---
+title: MVC 패턴 4) Servlet과 JSP 
+date: 2022-12-28 15:22:00 +/-0900
+categories: [studyplace, Hello-Spring!]
+tags: [spring]     # TAG names should always be lowercase
+---
+
+# Servlet
+
+```console
+INFO : com.fastcampus.ch2.HomeController - Welcome home! The client locale is ko_KR.
+HttpServlet init() is called 
+HttpServlet service() is called 
+HttpServlet service() is called 
+HttpServlet service() is called 
+HttpServlet service() is called 
+1월 01, 2023 6:58:22 오후 org.apache.catalina.core.StandardContext reload
+INFO: 이름이 [/ch2]인 컨텍스트를 다시 로드하는 작업이 시작되었습니다.
+1월 01, 2023 6:58:22 오후 org.apache.catalina.core.ApplicationContext log
+INFO: Destroying Spring FrameworkServlet 'appServlet'
+INFO : org.springframework.web.context.support.XmlWebApplicationContext - Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Sun Jan 01 18:56:06 KST 2023]; parent: Root WebApplicationContext
+INFO : org.springframework.beans.factory.support.DefaultListableBeanFactory - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@5fe46d52: defining beans [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping#0,org.springframework.format.support.FormattingConversionServiceFactoryBean#0,org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter#0,org.springframework.web.servlet.handler.MappedInterceptor#0,org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver#0,org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver#0,org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver#0,org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0,org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#0,org.springframework.web.servlet.view.InternalResourceViewResolver#0,homeController,requestMessage,hello,requestHeader,yoilTeller_servlet,yoilTellerMVC,twoDice,requestInfo,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@3002e397
+HttpServlet destory() is called 
+1월 01, 2023 6:58:22 오후 org.apache.catalina.core.ApplicationContext log
+INFO: Closing Spring root WebApplicationContext
+```
+
+>Httpservlet init()         :   한 번 실행됨.
+>Httpservlet service()  :   호출 될 때마다 실행.
+>Httpservlet destory()  :   서블릿이 종료될 때 실행.
+
+1. 싱글톤으로 이루어져 있다.
+2. 한개의 객체(인스턴스)만 만들어진다.
+    - 요청이 올 때마다 객체를 만드는 것이 아닌 재활용 한다.
+        + 요청하는 사용자마다 처리되어야 할 내용은 같기 때문.
+
+# JSP (Java Sever Page)
+- 서블릿과 유사하다.
+- Java In HTML.
+-JSP 에서 servlet으로 발전한다.
+
+# jsp/servlet 과 저장소
+1. 배경
+    - HTTP의 특징 : 상태 정보를 저장하지 않는다 (stateless)
+    - web에서는 page의 이동이 기본이므로 '저장소'가 필요하게 된다.
+
+2. 저장소의 종류 
+    - pageContext
+    - application
+    - session
+    - request
+
+3. 저장소별 특징 
+- 이는 접근 범위 및 생존 기간별로 나뉘어진다.
+- 모든 저장소는 Map형태로 key, value형태로 저장된다. 
+    1) pagecontext
+        - 하나의 요청/ 하나의 응답의 *.jsp 안에서'만' 실행된다. (jsp페이지의 시작부터 끝, jsp 내부에서만 접근 가능)
+        - 거의 el문 (${})을 쓰기 위해서만 사용되며 그 외의 특별한 장점은 없다.
+            + .jsp안에 <%= %> 안에 이용되며 이는 class안의 method 즉 지역변수를 담당하는 것과 같다. 
+    2) application
+        - web application의 시작부터 종료까지 요청 및 응답의 전체 페이지에서 접근이 가능하다.
+        - 하지만 저장소는 전체에서 단 하나만 존재한다. 즉 모든 클라이언트가 공유하는 하나의 저장소라 할 수 있다. 
+        - 그러므로 청에 따른 읽기 / 쓰기를 할 수 있게 된다.
+        - SetAttribute() - 쓰기 / GetAttribuet() - 읽기 등의 메소드가 있다.
+        - 중복된 요청이 같은 클라이언트 값임을 구분 못하므로 set/get 속성을 통해 페이지간의 정보를 이동시킨다. 
+        - 하지만 다른 클라이언트의 요청과 응답이 들어오면 초기화 되는 속성을 가지므로 개별적인 정보를 저장하는데에는 적합하지 않다.
+    3) session
+        - A client / B clinet 등 개별 요청에 따른 개별 저장소를  뜻한다.
+        - 클라이언트와 1:1 매칭이 된다.
+        - 그러므로 개별 속성을 저장한다. (id/pw 등)
+        - 클라이언트의 종료와 함께 session도 종료된다. (로그인-로그아웃)
+        - 그러나 사용자 마다 하나씩 생기는 개별 저장소이므로 사용자 수만큼 객체가 생성된다. 그러므로 session에는 최소한의 data만 저장되어있어야 하며 서버 부담이 가장 크다. 
+        - 편리하다고 모든 정보를 저장하면 안되고 session을 사용한 후 필요가 없을시엔 removeAttribute로 지워 주는 것이 좋다.
+    4) request
+        - 본래는 하나의 요청이 하나의 jsp와 응답한다.
+        - 하지만 하나의 요청이 jsp에 했지만 이것이 응답 할 수 없는 페이지일 시 다른 jsp 로 foward 할 수 있는데 이런 페이지간의 이동 (a.jsp->b.jsp)을 할 때 필요한 저장소이다. 
+        - 이 때 a.jsp/b.jsp 모두 data에 접근이 가능하다. 
+
+
