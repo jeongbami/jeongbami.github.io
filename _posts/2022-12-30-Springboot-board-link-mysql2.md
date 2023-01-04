@@ -5,26 +5,29 @@ categories: [studyplace, Hello-Spring!]
 tags: [spring]     # TAG names should always be lowercase
 ---
 
+# 배경
+아무리 재설치를 하고 brew services start mariadb를 해도 mariadb상태가 stopped에서 started로 변경되지가 않았다. mariadb와 mysql의 중복으로 MySQL을 삭제한다고 했지만 잔존 파일이 남아 있었던 것이다.
 
-1. 아무리 재설치를 하고 brew services start mariadb를 해도 mariadb상태가 stopped에서 started로 변경되지가 않았다.
-
-MySQL을 삭제한다고 했지만 잔존 파일이 남아 있었다.
-
-3.해결방법
-: 설치한 mysql, mariadb를 삭제 후 재설치를 한다. 이 과정에서 잔존 파일을 무조건 제거해야한다. 
-	•	brew services stop mariadb
-	•	brew remove mariadb
-	•	brew cleanup -> 이러면 일단 brew list 시 mariadb 혹은 mysql이 사라진 것을 볼 수 있습니다. 여기서 바로 재설치 하지 말고 잔존 파일을 찾습니다.
-	•	저는 아래 사진과 같이 mysql, mariadb를 finder에 검색해서 전부 다 지웠습니다
-	•	
-	•	이렇게 지웠으면 이제 my.cnf 파일을 찾아서 지워야합니다.😤 (이것때매 고생함 ㅠ)
-	•	->저의 경우에 my.cnf 파일 경로가 /opt/homebrew/etc/my.cnf 이렇게 있었습니다. my.cnf.d, my.cnf.default와 같이 my.cnf가 포함되어 있으면 다 지웁니다
-	•	이제 다시 brew install mariadb 을 통해 재설치합니다.
-	•	brew services start mariadb로 실행하고 brew services list를 보면 mariadb가 started인 것을 볼 수 있습니다.
-
-
+# 해결방법
+: 설치한 mysql, mariadb를 삭제 후 재설치를 한다. 이 과정에서 잔존 파일을 무조건 제거해야한다.
 ```shell
- sh_j@jeongbam-book  ~  brew install mariadb
+brew services stop mariadb
+brew remove mariadb
+brew cleanup
+	- 이러면 일단 brew list 시 mariadb 혹은 mysql이 사라진 것을 볼 수 있습니다. 
+	여기서 바로 재설치 하지 말고 잔존 파일을 찾습니다. mysql, mariadb를 finder에 검색해서 전부 다 지웠습니다 my.cnf 파일 또한 삭제 되어야하며 경로는 /opt/homebrew/etc/my.cnf 이렇게 있었습니다. my.cnf.d, my.cnf.default와 같이 my.cnf 가 포함되어 있으면 다 지웁니다
+brew install mariadb 을 통해 재설치합니다.
+brew services start mariadb
+brew services list
+mariadb started
+```
+
+# 위의 과정 shell script
+1. mariadb / mysql 설치
+2. root 계정 접속 
+3. root계정 비밀번호 설정 변경 후 모든 권한 부여 
+```shell
+sh_j@jeongbam-book  ~  brew install mariadb
 ==> Downloading https://ghcr.io/v2/homebrew/core/mariadb/manifests/10.9.4
 Already downloaded: /Users/JEONG/Library/Caches/Homebrew/downloads/5f5ea53491fad13c123906ed44b8f404113c393c2418253cf0028cf28b9a3a2c--mariadb-10.9.4.bottle_manifest.json
 ==> Downloading https://ghcr.io/v2/homebrew/core/mariadb/blobs/sha256:ceb1ff5294
