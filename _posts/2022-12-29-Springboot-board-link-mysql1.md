@@ -15,7 +15,8 @@ tags: [spring]     # TAG names should always be lowercase
 5. 페이징처리 (/board/paging)
 
 # resource
-> main>resources>application.yml {: filepath}
+- main>resources>application.yml {: filepath}
+
 ```yml
 # 서버 포트 설정
 server:
@@ -40,19 +41,15 @@ spring:
       ddl-auto: create
 ```
 
-# application.yml
-```c
+- applicatioin.yml
+
+```yml
 spring.datasource.url=jdbc:mysql://10.160.64.100:13307/op_371435a8_ec81_4ab7_9661_7a47043d6d02
     + jdbc:mysql://{mysql_proxy_ip}:{port}/{datasource}
 spring.datasource.username=232355719a91aab3
 spring.datasource.password=2b84d6727d3203b3
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver (manifest.yml 참조)
 ```
-
-
-# javax persistence dependency 추가
-
-- guild.gradle.kts의 jpa 부분에 버전을 명시해줌 (:2.6.2)
 
 # mysql table 생성
 - console창에서 table 사용 말하기  
@@ -66,24 +63,30 @@ spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver (manifest.yml 참�
 - 다 같게해야 편함
 
 
-# mysql 권한 확인
+# 오류
 
 
-- 오류 
+- 오류 1) mysql 권한 확인하기
+
 ```shell
 Access denied for user '232355719a91aab3'@'%' to database 'op_371435a8_ec81_4ab7_9661_7a47043d6d02.board'
 ```
-    1) 권한 확인
-    ```shell
-    mysql> show grants for 232355719a91aab3;
-    +-----------------------------------------------------------------------------------------------+
-    | Grants for 232355719a91aab3@%                                                               +-----------------------------------------------------------------------------------------------+
-    | GRANT USAGE ON *.* TO '232355719a91aab3'@'%'                                                  |
-    | GRANT ALL PRIVILEGES ON `op_371435a8_ec81_4ab7_9661_7a47043d6d02`.* TO '232355719a91aab3'@'%' |+-----------------------------------------------------------------------------------------------+
-    ```
 
+1) 권한 확인
+```shell
+mysql> show grants for 232355719a91aab3;
++-----------------------------------------------------------------------------------------------+
+| Grants for 232355719a91aab3@%                                                               +-----------------------------------------------------------------------------------------------+
+| GRANT USAGE ON *.* TO '232355719a91aab3'@'%'                                                  |
+| GRANT ALL PRIVILEGES ON `op_371435a8_ec81_4ab7_9661_7a47043d6d02`.* TO '232355719a91aab3'@'%' |+-----------------------------------------------------------------------------------------------+
+```
+
+- 오류2) primarykey 사용 안할 시 strict_mode 해제하기(근데 불가능함.) 
+
+```shell
 # dercona-XtraDB-Cluster
 - Method-1: Connect to mysql server and check variables
+```
 
 ```shell
 mysql> SHOW VARIABLES LIKE "pxc_strict_mode";
@@ -108,13 +111,18 @@ mysql> SHOW VARIABLES LIKE "pxc_strict_mode";
 +-----------------+----------+
 1 row in set (0.00 sec)
 ```
-
 > However, this value will be reverted back to MASTER is the VM is restarted or recreated. Also, disabling the pxc-strict-mode is not discouraged by Percona (The vendor that provides this HA topology) as the pxc-strict-mode is an important safety guard. Therefore, to safely work around this issue, add a primary key or a unique (not null) key to this table. There are other implications to not doing that that could have performance or data integrity implications for replication. {: warning}
 
-    + 일단..그냥 테이블 삭제 후 다시 생성해줬다.
+일단..그냥 테이블 삭제 후 다시 생성해줬다.
 
+- 오류 3 DB에 데이터가 안들어감
+
+```shell
 # unknwon caloum board_content
-기존 
+```
+
+기존
+
 ```shell
 CREATE TABLE `board` (
    `boardIndex` INT(10) NOT NULL AUTO_INCREMENT,
@@ -143,6 +151,8 @@ COLLATE='utf8_general_ci'
 ENGINE=InnoDB
 ;
 ```
+언더바 삽입했더니 데이터가 들어왔따. 이유가뭐지.. java에서 카멜케이스가 DB이름이 _로 해야 맵핑된다네요..
 
-==> 언더바 삽입했더니 데이터가 들어왔따. 이유가뭐지..
-java에서 카멜케이스가 DB이름이 _로 해야 맵핑된다네요;..
+- 오류 4 JPA 설치 에러 
+  - javax persistence dependency 추가
+  guild.gradle.kts의 jpa 부분에 버전을 명시해줌 (:2.6.2)

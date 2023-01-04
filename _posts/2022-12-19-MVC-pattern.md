@@ -51,8 +51,7 @@ tags: [spring]     # TAG names should always be lowercase
                 cal.set(year, month - 1, day);   
             }
 ```
-
-====> 이렇게 되면  입력의 부분이 사라진다.
+이렇게 되면  입력의 부분이 사라진다.
         1-2) common/uncommon을 분리.
         변하지 않는 것, 자주 변하지 않는 코드를 분리. 처리와 출력 부분을 분리한다.
         -> 결론적으로 관심사가 분리된다.
@@ -74,8 +73,7 @@ tags: [spring]     # TAG names should always be lowercase
             }
 ```
 
-이를 예로 들었을 때 같은 method 안에서는 "yoil"이라는 변수를 호출 할 수 있지만 처리/출력 부분을 분리 될 때는 method를 자유롭게 호출하지 못한다.
-이 때 처리와 출력 부분을 연결 해주는것이 "Model"이다. 
+이를 예로 들었을 때 같은 method 안에서는 "yoil"이라는 변수를 호출 할 수 있지만 처리/출력 부분을 분리 될 때는 method를 자유롭게 호출하지 못한다. 이 때 처리와 출력 부분을 연결 해주는것이 "Model"이다. 
 > 이렇게 연결(Model) / 처리(Controller) / 출력 (View)을 구분 한 것을 MVC Pattern 이라 부른다.
 
 
@@ -83,13 +81,13 @@ tags: [spring]     # TAG names should always be lowercase
 - Spring MVC pattern
 request    -----------------> DispathcerServlet(입력) - 결과를 저장할 객체생성  ->  Model  -----> Controller(처리) 
 response <-- View(출력) -- DispathcerServlet(입력) <------------------------------   Model <----- 결과 저장  ---┘
-
-1) Request 
-2) DispathcherServlet
-    - 입력을 받고 변환, Model생성 (new Model();)
-3) Controller
-    - Model model 매개변수로 받는다. 어떠한 View를 통해 출력 할 지를 지정해준다 (return값 )
-    > 이는 상황에 따른 view를 지정해 줄 수 있다는 장점을 가진다 (error page가 한 예이다.)
-4) View
-    - return 값으로 저장된 View로 전달. (xxx.jsp)
-5) Response
+- 순서
+    1) Request 
+    2) DispathcherServlet
+        - 입력을 받고 변환, Model생성 (new Model();)
+    3) Controller
+        - Model model 매개변수로 받는다. 어떠한 View를 통해 출력 할 지를 지정해준다 (return값 )
+        > 이는 상황에 따른 view를 지정해 줄 수 있다는 장점을 가진다 (error page가 한 예이다.)
+    4) View
+        - return 값으로 저장된 View로 전달. (xxx.jsp)
+    5) Response
