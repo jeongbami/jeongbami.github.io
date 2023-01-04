@@ -26,6 +26,7 @@ mariadb started
 1. mariadb / mysql 설치
 2. root 계정 접속 
 3. root계정 비밀번호 설정 변경 후 모든 권한 부여 
+
 ```shell
 sh_j@jeongbam-book  ~  brew install mariadb
 ==> Downloading https://ghcr.io/v2/homebrew/core/mariadb/manifests/10.9.4
