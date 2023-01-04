@@ -105,6 +105,7 @@ Access denied for user '232355719a91aab3'@'%' to database 'op_371435a8_ec81_4ab7
   ```
 
   + disabled pxc_strict_mode 해제
+
   ```shell
   mysql> SET GLOBAL pxc_strict_mode=DISABLED;
   Query OK, 0 rows affected (0.00 sec)
