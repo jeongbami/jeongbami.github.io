@@ -35,16 +35,19 @@ INFO: Closing Spring root WebApplicationContext
         + 요청하는 사용자마다 처리되어야 할 내용은 같기 때문.
 
 # JSP (Java Sever Page)
+
 - 서블릿과 유사하다.
 - Java In HTML.
 -JSP 에서 servlet으로 발전한다.
 
-# jsp/servlet 과 저장소
+# jsp/servlet 과 저장소(scope)
+
 1. 배경
     - HTTP의 특징 : 상태 정보를 저장하지 않는다 (stateless)
     - web에서는 page의 이동이 기본이므로 '저장소'가 필요하게 된다.
+    - 이 저장소는 Map의 형태를 띄고 있으며 Key / Valuer값으로 저장된다.
 
-2. 저장소의 종류 
+2. 저장소의 종류
     - pageContext
     - application
     - session
@@ -71,12 +74,23 @@ INFO: Closing Spring root WebApplicationContext
         - 클라이언트와 1:1 매칭이 된다.
         - 그러므로 개별 속성을 저장한다. (id/pw 등)
         - 클라이언트의 종료와 함께 session도 종료된다. (로그인-로그아웃)
-        - 그러나 사용자 마다 하나씩 생기는 개별 저장소이므로 사용자 수만큼 객체가 생성된다. 그러므로 session에는 최소한의 data만 저장되어있어야 하며 서버 부담이 가장 크다. 
+        - 그러나 사용자 마다 하나씩 생기는 개별 저장소이므로 사용자 수만큼 객체가 생성된다. 그러므로 session에는 최소한의 data만 저장되어있어야 하며 서버 부담이 가장 크다.
         - 편리하다고 모든 정보를 저장하면 안되고 session을 사용한 후 필요가 없을시엔 removeAttribute로 지워 주는 것이 좋다.
 
     4. request
         - 본래는 하나의 요청이 하나의 jsp와 응답한다.
-        - 하지만 하나의 요청이 jsp에 했지만 이것이 응답 할 수 없는 페이지일 시 다른 jsp 로 foward 할 수 있는데 이런 페이지간의 이동 (a.jsp->b.jsp)을 할 때 필요한 저장소이다. 
-        - 이 때 a.jsp/b.jsp 모두 data에 접근이 가능하다. 
+        - 하지만 하나의 요청이 jsp에 했지만 이것이 응답 할 수 없는 페이지일 시 다른 jsp 로 foward 할 수 있는데 이런 페이지간의 이동 (a.jsp->b.jsp)을 할 때 필요한 저장소이다.
+        - 이 때 a.jsp/b.jsp 모두 data에 접근이 가능하다.
 
+# 참고
 
+scope들이 가지고 있는 기본객체의 이름은 서로 mapping된다 ( 변수룰 소환할 때 쓰임 )
+그러나 page는 pageContext라는 이름으로 기본 객체를 가지고 있어 헷갈리기 쉽다.
+
+[ scope ]        [ 기본 객체(저장소 객체) ]
+page                `pageContext`
+request             request
+session             session
+application       application
+
+: 이는 필요할 때 검색해서 알아두는것을 추천한다.
