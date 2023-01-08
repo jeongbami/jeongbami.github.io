@@ -1,5 +1,5 @@
 ---
-title: MVC 패턴 3) spring의 작동 원리
+title: MVC 패턴 3) MVC패턴의 작동원리 
 date: 2022-12-28 15:22:00 +/-0900
 categories: [studyplace, Hello-Spring!]
 tags: [spring]     # TAG names should always be lowercase
