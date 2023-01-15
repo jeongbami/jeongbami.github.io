@@ -19,7 +19,7 @@ tags: [spring]     # TAG names should always be lowercase
     public String main(@RequestParam(name="year" required=false) String year)
     ```
 
-    와 같다. 평소 표기방법은 변수 호출 시 변수 타입 앞의 @~()가 생략 된 것. String year의 값이 없다면 null, 'year'라는 parameter만 넘어왔다면 '빈문자열'이 출력된다. (이 둘은 명백히 다름 ) 그렇다면 처음부터 @Requestparam과 함께 쓰인 변수는 어떨까 ?
+    와 같다. 평소 표기방법은 변수 호출 시 변수 타입 앞의 @~()가 생략 된 것. String year의 값이 없다면 null, 'year'라는 parameter만 넘어왔다면 '빈문자열'이 출력된다. (이 둘은 명백히 다름 ) 그렇다면 변수 선언과 동시에 @Requestparam을 쓰면 어떨까  ?
 
 2. RequestParam(required=true, String year)
 
