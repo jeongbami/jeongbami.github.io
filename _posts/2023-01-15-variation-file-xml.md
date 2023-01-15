@@ -1,5 +1,5 @@
 ---
-title:  .xml
+title:  "*.xml"
 date: 2023-01-15 18:56:00 +/-0900
 categories: [studyplace, Hello-Spring!]
 tags: [spring]     # TAG names should always be lowercase
