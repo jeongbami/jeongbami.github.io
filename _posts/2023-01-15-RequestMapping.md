@@ -36,3 +36,6 @@ tags: [spring]     # TAG names should always be lowercase
         - method : "get(==default)" - Body가 없어 query string으로 전송되는 방식 / "post"
 2. <input> : 사용자가 값을 입력
 3. <submit> : form에 action attribute의 주소로 전송
+
+
+MakeForm 다시 정리해야함 230118
