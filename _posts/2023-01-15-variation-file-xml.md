@@ -1,7 +1,7 @@
 ---
 title:  "*.xml"
 date: 2023-01-15 18:56:00 +/-0900
-categories: [studyplace, Hello-Spring!]
+categories: [variation, some var things]
 tags: [spring]     # TAG names should always be lowercase
 ---
 d
