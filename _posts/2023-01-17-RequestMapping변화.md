@@ -15,7 +15,7 @@ tags: [spring]     # TAG names should always be lowercase
 
 # 회원가입 화면이 하는 일 ?
 
-- 회원가입 화면은 실질적으로 하는 일이 없다.  submit을 통한 처리만 있을 뿐 "회원 가입 창" 자체는 하는 일이 없음.
+- 회원가입 화면은 실질적으로 하는 일이 없다.  submit을 통한 처리만 있을 뿐 "회원 가입 창" 자체는 하는 일이 없음.g
 - 그래서 굳이 @GetMapping이나 method를 만들어 view를 return하는 등의 수고스러움은 필요 없다.
 
     - view 화면만을 띄워주기 위한 servlet-context 설정
