@@ -28,3 +28,19 @@ tags: [spring]     # TAG names should always be lowercase
         path에는 @RequestMapping의 value 값을 , view-name은 registerForm.jsp의 이름을 적어주면 된다. 
 
         :view-controller는 GET요청만 허용한다.
+
+# spring으로 전환 후 오류 메세지 출력
+
+1. `return "redirect:/register/add?msg="+msg;`
+    model을 추가하지 않고 URL재작성 방법인 rewriting 방법을 통해 URL에 오류 메세지를 출력한다
+2. Model model 선언 / model.addAttribute("msg" ,msg) / return "redirect:/register/add"
+    model에 오류메세지를 추가하여 출력해주기
+    오류 메세지를 여러개 출력하기
+- 가끔 msg가 표시 되지 않을 때
+
+    ```js
+    <i class="fa fa-exclamation-circle"> ${URLDecoder.decode(param.msg)}</i>
+    ```
+    
+    :: URLDecoder에서 decoding을 해주어야한다
+    :: 이는 java class로 `<%@ page import="java.net.URLDecoder"%>` 를 inport 해주어야함.
