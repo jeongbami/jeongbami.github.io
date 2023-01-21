@@ -4,7 +4,7 @@ date: 2023-01-15 18:56:00 +/-0900
 categories: [variation, some var things]
 tags: [spring]     # TAG names should always be lowercase
 ---
-d
+
 
 프로젝트 실행 -> Server > web.xml  -> WEB-INF > web.xml
 
