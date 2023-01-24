@@ -11,7 +11,7 @@ tags: [spring]     # TAG names should always be lowercase
 1. redirect
     - 요청1
     - 응답1
-    - 요청2
+    - 요청2(브라우저가 자동으로 요청)
     - 응답2
 
     : 요청과 응답이 두 번 일어난다.
@@ -64,7 +64,8 @@ tags: [spring]     # TAG names should always be lowercase
         : view 이름을 전달
         : 그에 맞는 file url을 반환해줌.
         : response "/WEB-INF/view/registerForm.jsp"
-        : DispatcherServlet이 전달 받음.
+        : DispatcherServlet이 전달 받음. 
+        : fowarding 내부적 요청.
 4. JstlView(Model)
     - DispathcerServlet에게 받은 응답값을 전달 받음
     - 전달받은 jsp data를 넘겨준다 (Model)
@@ -77,7 +78,7 @@ tags: [spring]     # TAG names should always be lowercase
 
     ```java
     @PostMapping("/register/save"){
-        return "foward:/register/add";
+        return "foward:/register/add"; 
     }
     ```
 
@@ -93,6 +94,7 @@ tags: [spring]     # TAG names should always be lowercase
     : 위와 mapping된 값을 찾음
 5. Dispatcher <-> Controller (위의 과정과 같음)
     : "register/add"로 요청에 응한 method를 찾아 view 값을 전달하고 전달받음.
+    : 내부적 요청 -- fowarding이 일어나는 곳
 6. InternalResourceViewResolver
     : Dispatcher와 소통 및 응답.
     : "/register/add"로 mapping된 view값을 찾음.

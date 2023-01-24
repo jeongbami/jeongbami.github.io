@@ -1,6 +1,6 @@
 ---
 title:  git window/mac 개행 문자 차이로 인한 upload issue
-date: 2023-01-22 14:30:00 +/-0900
+date: 2023-01-23 14:30:00 +/-0900
 categories: [variation, some var things]
 tags: [git, spring, mac, windows, crlf]     # TAG names should always be lowercase
 ---
