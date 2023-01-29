@@ -10,15 +10,15 @@ tags: [spring]     # TAG names should always be lowercase
 
 1. web.xml
     - Server > Tomcat > web.xml
-        : 모든 web-app의 공통 설정
+        - 모든 web-app의 공통 설정
     - src > main > webapp > WEB-INF > web.xml
-        : 해당 프로젝트에 대한 개별 설정
-        : servlet 및 URL 등록
+        - 해당 프로젝트에 대한 개별 설정
+        - servlet 및 URL 등록
             - Servlet 등록 ---spring --> @Controller
             - Servlet 등록 --- servlet --> @WebServlet 
             - URL연결       ---spring--> @RequestMapping
-        : <servlet>원격 프로그램 등록</servlet> 
-        : <servlet-mapping>URL pattern 등록 </servlet-mapping>
+                - `<servlet>`원격 프로그램 등록`</servlet>`
+                - `<servlet-mapping>`URL pattern 등록 `</servlet-mapping>`
 
 
 

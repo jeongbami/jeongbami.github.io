@@ -13,13 +13,13 @@ MySQL 설치를 통해 알아보기 명령어들이 어떤 역할을 하는지 �
        
 ## SERVICE BROCKER
 - service를 사용하기 위해 만든 API
-    +`cf service-brokers`      사용할 수 있는 borker의 목록을 확인한다
-    +`cf create-service-broker username userpassword http:{mysql-broker-ip}:8080`
-        * 등록되어있는 service-broker가 없다면 생성해준다
-    + `cf enable-service-access`
+    - `cf service-brokers`      사용할 수 있는 borker의 목록을 확인한다
+    - `cf create-service-broker username userpassword http:{mysql-broker-ip}:8080`
+        - 등록되어있는 service-broker가 없다면 생성해준다
+    - `cf enable-service-access`
 -  service broker 개발 환경
     + Cloud Foundry instance에 대한 관리자 권한이 있어야 함.
-    > `In order to run many of the commands below, you must be authenticated with Cloud Foundry as an admin user or as a space developer.`                                                   - cloudfoundry docs
+         > `In order to run many of the commands below, you must be authenticated with Cloud Foundry as an admin user or as a space developer.` - cloudfoundry docs
         * cloud foundry에서 인증 받은 admin as SpaceDeveloper만 개발 가능 
     + admin 계정에 등록된 mysql-service-broker 접근 권한 부여
         * > admin이 cf enalbe-service-access <service name> -o <org-name> 를 통해 access를 부여해야만 해당 org내의 사용자들이 접근 가능하다. {: .prompt-tip} <br>
@@ -101,7 +101,7 @@ Instances starting...
         * that called 'service instance' <br>
 -  service binding
     + 일부 서비스에 한해 제공된다.
-        *`cf bind-service MY_APP MY_DB`
+        - `cf bind-service MY_APP MY_DB`
         * `cf bind-route-service DOMAIN`
     1) Service instance bind App <br>
         deliver credentials for the service instace to the app<br>

@@ -30,11 +30,11 @@ tags: [spring]     # TAG names should always be lowercase
         * 변하는 것 , 자주 변하지 않는 코드를 분리한다. (common code/uncommon code)
         * 공통 (중복) 코드를 분리한다. (분리하여 따로 빼둔다)
         
-        1-1) 공통 코드의 분리
+        1) 공통 코드의 분리
             - 입력
             입력은 통상적으로 request.getparameter()를 쓴다. 이는 공통적으로 쓰는 method로 본다.
-
-```java
+            
+            ```java
             public void main(HttpServletRequest request) {
                 String year = request.getParameter("year");
                 String year = request.getParameter("month");
@@ -50,37 +50,39 @@ tags: [spring]     # TAG names should always be lowercase
                 Calendar cal = Calndar.getInstance();
                 cal.set(year, month - 1, day);   
             }
-```
-이렇게 되면  입력의 부분이 사라진다.
-        1-2) common/uncommon을 분리.
-        변하지 않는 것, 자주 변하지 않는 코드를 분리. 처리와 출력 부분을 분리한다.
-        -> 결론적으로 관심사가 분리된다.
-
-```java
-        //처리 
-        public void main(int year, int month, int day) { //String을 int로 자동변환해준다.(spring이 해줌)
-        Calendar cal = Calndar.getInstance();
-        cal.set(year, month - 1, day);
-        
-        int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
-        char yoil = "일월화수목금토".charAt(dayOfWeek);
-
-        //출력
-        // 이하 출력 부분  
+            ```
+            : 이렇게 되면  입력의 부분이 사라진다.
+            
+            2) common/uncommon을 분리.
+            변하지 않는 것, 자주 변하지 않는 코드를 분리. 처리와 출력 부분을 분리한다
+            -> 결론적으로 관심사가 분리된다.
+            
+            ```java
+            //처리 
+            public void main(int year, int month, int day) { //String을 int로 자동변환해준다.(spring이 해줌)
+            Calendar cal = Calndar.getInstance();
+            cal.set(year, month - 1, day);
+            
+            int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+            char yoil = "일월화수목금토".charAt(dayOfWeek);
+            
+            //출력
+            // 이하 출력 부분  
             .
             .
             .                  
             }
-```
-
-이를 예로 들었을 때 같은 method 안에서는 "yoil"이라는 변수를 호출 할 수 있지만 처리/출력 부분을 분리 될 때는 method를 자유롭게 호출하지 못한다. 이 때 처리와 출력 부분을 연결 해주는것이 "Model"이다. 
-> 이렇게 연결(Model) / 처리(Controller) / 출력 (View)을 구분 한 것을 MVC Pattern 이라 부른다.
+            ```
+            
+            이를 예로 들었을 때 같은 method 안에서는 "yoil"이라는 변수를 호출 할 수 있지만 처리/출력 부분을 분리 될 때는 method를 자유롭게 호출하지 못한다. 이 때 처리와 출력 부분을 연결 해주는것이 "Model"이다.
+            
+            > 이렇게 연결(Model) / 처리(Controller) / 출력 (View)을 구분 한 것을 MVC Pattern 이라 부른다.
 
 
 # 결론
 - Spring MVC pattern
-request    -----------------> DispathcerServlet(입력) - 결과를 저장할 객체생성  ->  Model  -----> Controller(처리) 
-response <-- View(출력) -- DispathcerServlet(입력) <------------------------------   Model <----- 결과 저장  ---┘
+request   -> DispathcerServlet(입력) - 결과를 저장할 객체생성  ->  Model  -> Controller(처리) 
+response <------ View(출력) ----- DispathcerServlet(입력) <------------------------------   Model <----- 결과 저장  ---┘
 - 순서
     1) Request 
     2) DispathcherServlet

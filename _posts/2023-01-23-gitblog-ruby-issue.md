@@ -5,6 +5,7 @@ categories: [variation, some var things]
 tags: [git, spring, mac, windows, crlf]     # TAG names should always be lowercase
 ---
 
+# trobleshooting
 1. ruby 버전을 확인한다
     내 pc에 깔린 ruby의 버전과 xml의 버전이 다를 수 있음
 2. linux와의 프로그래밍에서 충돌이 일어났을 수 있음 

@@ -30,15 +30,15 @@ tags: [spring]     # TAG names should always be lowercase
 </form>
 ```
 
-1. '<form>' : 데이터를 사용자에게 입력 받기 위한 양식
+1. `Form` : 데이터를 사용자에게 입력 받기 위한 양식
     - attribute
         - action : 전송할 URL (default==자기 자신에게 전송 (화면 refresh))
         - method : "get(==default)" - Body가 없어 query string으로 전송되는 방식 / "post"
             : Query string으로 지정된 이름은 input tag의 name=""이다.
-2. '<input>' : 사용자가 값을 입력.
-3. '<submit>' : form에 action attribute의 주소로 전송
-4. '{param.Values} : jsp에서 넘어온 값들 중 name이 같은 이름은 중복되어 전송 되기 때문에 모든 값이 넘어오지 못한다. 그 때 EL문에 있는 param.Values를 사용하면 그 값들을 배열에 담아 저장한다. param.Values[0],[1],,로 출력 할 수 있다. 
-5. onsubmit : form형식을 제출할 때 호출 될 function을 지정하는 곳
+2. `input` : 사용자가 값을 입력.
+3. `submit` : form에 action attribute의 주소로 전송
+4. `{param.Values}` : jsp에서 넘어온 값들 중 name이 같은 이름은 중복되어 전송 되기 때문에 모든 값이 넘어오지 못한다. 그 때 EL문에 있는 param.Values를 사용하면 그 값들을 배열에 담아 저장한다. param.Values[0],[1],,로 출력 할 수 있다. 
+5. `onsubmit` : form형식을 제출할 때 호출 될 function을 지정하는 곳
     - "return FUNCTION_NAME(this) { }" 으로 작성
     - this 는 onsubmit이 속해있는 <Form> 자체
     - 원래는 function() { return function(this) }; 로 호출 해야하는데 생략하고 return 값만 적어준다.

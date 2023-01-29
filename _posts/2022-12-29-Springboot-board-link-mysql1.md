@@ -57,7 +57,7 @@ spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver (manifest.yml 참�
 - Query 재생
 - Query문 작성
 - application.properties 수정
-   `spring.datasource.url=jdbc:mysql://localhost:3306/{table_name}?serverTimezone=UTC&characterEncoding=UTF-8``
+   `spring.datasource.url=jdbc:mysql://localhost:3306/{table_name}?serverTimezone=UTC&characterEncoding=UTF-8`
 
 # input name == query name == variable name
 - 다 같게해야 편함

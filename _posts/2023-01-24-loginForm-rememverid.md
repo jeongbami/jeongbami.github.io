@@ -9,13 +9,13 @@ tags: [spring]     # TAG names should always be lowercase
 # login 화면에서 "아이디 기억" 활성화하기
 
 1. if (cookie==!null) : 쿠키가 있다면?
-    1-1 기억한 id를 "id입력란"에 넣어준다.
+    1) 기억한 id를 "id입력란"에 넣어준다.
     
     ```js
     <input type = "text" name ="id" placeholder="이메일 입력" autofocus value="{기억한id}">
     ```
 
-    1-2 "아이디 기억"에 checked 해준다.
+    2) "아이디 기억"에 checked 해준다.
 
     ```js
     <input type ="checkbox" name= "rememverId" checked/>
