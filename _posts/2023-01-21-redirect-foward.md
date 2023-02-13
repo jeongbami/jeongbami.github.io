@@ -62,7 +62,7 @@ tags: [spring]     # TAG names should always be lowercase
 3. Controller
     - InternalResourceViewResolver(appSesrvlet>servlet-context.xml에 있음)
         : view 이름을 전달
-        : 그에 맞는 file url을 반환해줌.
+        : 그에 맞는 file url을 반환해줌. (prefix,suffix를 붙여 url 반환)
         : response "/WEB-INF/view/registerForm.jsp"
         : DispatcherServlet이 전달 받음. 
         : fowarding 내부적 요청.
