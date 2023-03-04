@@ -67,10 +67,11 @@ spec:        # user가 원하는 pod의 상태 정의
 - rs는 pod개수를 유지하려는 속성이 있기 때문에 하나의 pod가 삭제된다.
 
 > yaml파일을  replicas 4개로 선언해본다.(선언 후 재배포)
-- 하나의 pod가 생성되며 이 때 다른 변경된 yaml파일 형식이 있다면 적용되어 생성된다.
-- 재배포 후 replicas 수를 하향시 마지막에 생성된 pod들 먼저 삭제된다.
 
-<h4>이는 pod replicaset이 상태가 변경 되더라도 기존의 pod에는 영향을 주지 않으며 변경된 이 후에 생성된 pod들만 영향을 끼친다. <h4>
+- 하나의 pod가 생성되며 이 때 다른 변경된 yaml파일 형식이 있다면 적용되어 생성된다.
+- 재배포 후 replicas 수를 하향시 마지막에 생성된 pod들 먼저 삭제된다.<br>
+
+이는 pod replicaset이 상태가 변경 되더라도 기존의 pod에는 영향을 주지 않으며 변경된 이 후에 생성된 pod들만 영향을 끼친다.<br>
 
 ### replicaSet의 Rollback
 1. ReplicaSet이 생성한 파드로 통신하기  
