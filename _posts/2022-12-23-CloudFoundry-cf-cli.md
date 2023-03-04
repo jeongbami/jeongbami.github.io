@@ -1,9 +1,8 @@
 ---
 title: cf CLI (service-broker)
 date: 2022-12-23 14:38:00 +/-0900
-categories: [cloud, Hello-cloud!]
+categories: [iaas, Hello-k8s!]
 tags: [cloud, cloudfoundry]     # TAG names should always be lowercase
-render_with_liquid: false
 ---
 
 
